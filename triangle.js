@@ -7,33 +7,21 @@ class Triangle extends Phaser.Scene {
     this.load.path = "./assets/";
     this.load.image('space', 'space3.png');
     this.load.image('ehouse', 'star.png');
-    this.load.image('laser', 'fireball.png');
+    
   }
 
-  shootLaser() {
-    this.laserGroup.fireLaser(this.met.x, this.met.y - 20);
-  }
+  
 
   addEvents() {
-    // this.input.on('pointermove', (pointer) => {
-    //   this.met.x = pointer.x;
-    // });
-
-    this.input.on('pointerdown', pointer => {
-      this.shootLaser();
-    });
-
+    
     this.inputKeys = [
-      this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE),
+      
       this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER),
     ];
   }
 
   create() {
     this.addEvents();
-
-    this.laserGroup = new LaserGroup(this);
-    this.laserGroup.setDepth(1);
 
     /////////////////////stats//////////////////
     const text = this.add.text(1600, 100, 'LIVES: ' + lives, { fontFamily: 'Arial', fontSize: 40, color: '#ffffff' });
@@ -85,7 +73,7 @@ class Triangle extends Phaser.Scene {
     
 
     this.rectangleGroup3 = this.physics.add.group([
-      this.add.rectangle(950, 500, 1200, 50, 0xFFFFFF)
+      this.add.rectangle(950, 500, 100, 50, 0x8A9A5B)
       .setDepth(1),
 
       this.add.rectangle(900, 1300, 2100, 700, 0x8A9A5B) // x, y, width, height
@@ -96,7 +84,7 @@ class Triangle extends Phaser.Scene {
     if (earthhouse) {
       this.ehouse = this.physics.add.sprite(
         700,//x
-        900,//y
+        700,//y
         'ehouse',//imagename
       )
       this.ehouse.setScale(1, -1);
@@ -107,7 +95,7 @@ class Triangle extends Phaser.Scene {
     if (earthhouse2) {
       this.ehouse2 = this.physics.add.sprite(
         1700,//x
-        900,//y
+        600,//y
         'ehouse',//imagename
       )
       this.ehouse2.setScale(1, -1);
@@ -118,7 +106,7 @@ class Triangle extends Phaser.Scene {
     if (earthhouse3) {
       this.ehouse3 = this.physics.add.sprite(
         200,//x
-        900,//y
+        100,//y
         'ehouse',//imagename
       )
       this.ehouse3.setScale(1, -1);
@@ -203,12 +191,7 @@ class Triangle extends Phaser.Scene {
       this.scene.start('level_select');
     }
 
-    ///////////////////shoot///////////////
-    this.inputKeys.forEach(key => {
-      // If key was just pressed down, shoot the laser. We use JustDown to make sure this only fires once.
-      if (Phaser.Input.Keyboard.JustDown(key)) {
-        this.shootLaser();
-      }
-    });
+    
+    
   }
 }

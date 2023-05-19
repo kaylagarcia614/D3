@@ -7,12 +7,10 @@ class Circle extends Phaser.Scene {
     this.load.path = "./assets/";
     this.load.image('space', 'space3.png');
     this.load.image('phouse', 'star.png');
-    this.load.image('laser', 'fireball.png');
+    
   }
 
-  shootLaser() {
-    this.laserGroup.fireLaser(this.met.x, this.met.y - 20);
-  }
+  
 
   addEvents() {
     // this.input.on('pointermove', (pointer) => {
@@ -24,16 +22,13 @@ class Circle extends Phaser.Scene {
     });
 
     this.inputKeys = [
-      this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE),
+      
       this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER),
     ];
   }
 
   create() {
     this.addEvents();
-
-    this.laserGroup = new LaserGroup(this);
-    this.laserGroup.setDepth(1);
 
     ////////////////stats////////////////////////
     const text = this.add.text(1600, 100, 'LIVES: ' + lives, { fontFamily: 'Arial', fontSize: 40, color: '#ffffff' });
@@ -107,7 +102,7 @@ class Circle extends Phaser.Scene {
     if (cheesehouse) {
       this.phouse = this.physics.add.sprite(
         900,//x
-        900,//y
+        800,//y
         'phouse',//imagename
       )
       this.phouse.setScale(1, -1);
@@ -118,7 +113,7 @@ class Circle extends Phaser.Scene {
     if (cheesehouse2) {
       this.phouse2 = this.physics.add.sprite(
         1700,//x
-        900,//y
+        400,//y
         'phouse',//imagename
       )
       this.phouse2.setScale(1, -1);
@@ -129,7 +124,7 @@ class Circle extends Phaser.Scene {
     if (cheesehouse3) {
       this.phouse3 = this.physics.add.sprite(
         200,//x
-        900,//y
+        300,//y
         'phouse',//imagename
       )
       this.phouse3.setScale(1, -1);
@@ -143,10 +138,7 @@ class Circle extends Phaser.Scene {
   }
 
   update() {
-    // const text = this.add.text(1700, 100, 'lives: ' + lives, { fontFamily: 'Arial', fontSize: 40, color: '#ffffff' });
-    // text.setDepth(1);
-    // physics methods adapted from the Phaser 3 Asteroids Example 👍
-    // handle input
+    
 
     ///////////////////movement///////////////////////
     if (cursors.up.isDown) {
@@ -165,8 +157,7 @@ class Circle extends Phaser.Scene {
       // this.rightKey.tint = 0xFACADE;   // tint keyboard key
     } else {
       this.met.setAngularVelocity(0);
-      // this.leftKey.tint = 0xFFFFFF;   // un-tint keys
-      // this.rightKey.tint = 0xFFFFFF;
+      
     }
 
     ////////////////collisions/////////////////////
@@ -224,12 +215,7 @@ class Circle extends Phaser.Scene {
       this.scene.start('level_select');
     }
 
-    //////////////shooot///////////////////
-    this.inputKeys.forEach(key => {
-      // If key was just pressed down, shoot the laser. We use JustDown to make sure this only fires once.
-      if (Phaser.Input.Keyboard.JustDown(key)) {
-        this.shootLaser();
-      }
-    });
+    
+    
   }
 }

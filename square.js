@@ -194,7 +194,7 @@ class Square extends Phaser.Scene {
             
             bluehouse = false;
             this.bhouse.destroy();
-            score += 1;
+            score += 100;
             
         }
         function tohit2(a, b) {
