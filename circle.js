@@ -1,6 +1,6 @@
-class Cheese extends Phaser.Scene {
+class Circle extends Phaser.Scene {
   constructor() {
-    super('cheese');
+    super('circle');
     this.inputKeys;
   }
   preload() {

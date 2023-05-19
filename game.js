@@ -61,7 +61,7 @@ let config = {
               }
         }
     },
-    scene: [Start, Intro, Title, Level_select, Cheese, Bluecheese, Earth, Gameover]
+    scene: [Start, Intro, Title, Level_select, Circle, Square, Triangle, Gameover]
     
 };
 

@@ -1,6 +1,6 @@
-class Earth extends Phaser.Scene {
+class Triangle extends Phaser.Scene {
   constructor() {
-    super('earth');
+    super('triangle');
     this.inputKeys;
   }
   preload() {

@@ -1,6 +1,6 @@
-class Bluecheese extends Phaser.Scene {
+class Square extends Phaser.Scene {
     constructor() {
-        super('bluecheese');
+        super('square');
         this.inputKeys;
     }
     preload() {
@@ -200,7 +200,7 @@ class Bluecheese extends Phaser.Scene {
             }
             else {
                 
-                this.scene.start('bluecheese');
+                this.scene.start('square');
             }
         }
 

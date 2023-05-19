@@ -161,17 +161,17 @@ class Level_select extends Phaser.Scene {
         function toearth() {
             // Trigger the scene change here
             // For example:
-            this.scene.start('earth');
+            this.scene.start('triangle');
         }
         function tocheese() {
             // Trigger the scene change here
             // For example:
-            this.scene.start('cheese');
+            this.scene.start('circle');
         }
         function toblue() {
             // Trigger the scene change here
             // For example:
-            this.scene.start('bluecheese');
+            this.scene.start('square');
         }
         
 
