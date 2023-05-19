@@ -6,6 +6,7 @@ PROTOTYPE
 https://docs.google.com/presentation/d/1f_B9h8DVMteFV4pdHZ7_LnFV3DzaodJGgLvmmJGYcc4/edit#slide=id.g242143620c8_0_71
 
 LINK TO PLAY
+https://kaylagarcia614.github.io/D3/
 
 DESCRIPTION
 All assets utilized in the creation of the game were generated through Pixilart.com. The game mechanics drew inspiration from Gravitar. To fulfill the requirement of scene establishment and gameplay separation, a mini level selection feature was implemented within the actual gameplay. This allows players to choose a level and activate one of the 3 mini games comprising the overall gaming experience. Each of the mini games incorporates gravity physics. Continuous inputs are supported through the x and y axes, while discrete inputs can be executed using the space bar, left, right, and up arrow keys. T
