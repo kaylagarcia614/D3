@@ -1,5 +1,14 @@
+D3Physics
+i used inspiration for the colliding with the stars from this website: https://labs.phaser.io/view.html?src=src/physics/arcade/collision%20direction.js
+i also took inspiration from this website for colliding with walls: https://labs.phaser.io/view.html?src=src/physics/arcade/collision%20direction.js
+
+PROTOTYPE
+https://docs.google.com/presentation/d/1f_B9h8DVMteFV4pdHZ7_LnFV3DzaodJGgLvmmJGYcc4/edit#slide=id.g242143620c8_0_71
+
+LINK TO PLAY
+
 DESCRIPTION
-All assets utilized in the creation of the game were generated through Pixilart.com. The game mechanics drew inspiration from Gravitar, an arcade game released by Atari. To fulfill the requirement of scene establishment and gameplay separation, a mini level selection feature was implemented within the actual gameplay. This allows players to choose a level and activate one of the mini games comprising the overall gaming experience. Each of the mini games incorporates gravity physics, meaning that players will descend if not in flight. Continuous inputs are supported through the x and y axes, while discrete inputs can be executed using the space bar, left, right, and up arrow keys. The player character will perish following three collisions, and stars will be destroyed upon contact with fireballs.
+All assets utilized in the creation of the game were generated through Pixilart.com. The game mechanics drew inspiration from Gravitar. To fulfill the requirement of scene establishment and gameplay separation, a mini level selection feature was implemented within the actual gameplay. This allows players to choose a level and activate one of the 3 mini games comprising the overall gaming experience. Each of the mini games incorporates gravity physics. Continuous inputs are supported through the x and y axes, while discrete inputs can be executed using the space bar, left, right, and up arrow keys. T
 
 Process requirements:
 Your GitHub repository must show a history of incremental commits with useful commit messages, tracing back to an empty repository at the start.
