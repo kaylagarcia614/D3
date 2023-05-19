@@ -7,24 +7,12 @@ class Square extends Phaser.Scene {
         this.load.path = "./assets/";
         this.load.image('space', 'space3.png');
         this.load.image('bhouse', 'star.png');
-        this.load.image('laser', 'fireball.png');
-    }
-
-    shootLaser() {
-        this.laserGroup.fireLaser(this.met.x, this.met.y - 20);
     }
 
     addEvents() {
-        // this.input.on('pointermove', (pointer) => {
-        //   this.met.x = pointer.x;
-        // });
-
-        this.input.on('pointerdown', pointer => {
-            this.shootLaser();
-        });
-
+        
         this.inputKeys = [
-            this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE),
+            
             this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER),
         ];
     }
@@ -170,25 +158,15 @@ class Square extends Phaser.Scene {
         }
 
         /////////////////collisions//////////////////
-        this.physics.add.collider(this.met, this.bhouse, togameover, null, this);
-        this.physics.add.collider(this.met, this.bhouse2, togameover, null, this);
-        this.physics.add.collider(this.met, this.bhouse3, togameover, null, this);
 
-        this.physics.add.overlap(this.laserGroup, this.bhouse, tohit, null, this);
-        this.physics.add.overlap(this.laserGroup, this.bhouse2, tohit2, null, this);
-        this.physics.add.overlap(this.laserGroup, this.bhouse3, tohit3, null, this);
+        this.physics.add.overlap(this.met, this.bhouse, tohit, null, this);
+        this.physics.add.overlap(this.met, this.bhouse2, tohit2, null, this);
+        this.physics.add.overlap(this.met, this.bhouse3, tohit3, null, this);
 
        
         this.physics.add.collider(this.met, this.rectangleGroup5, togameover, null, this);
 
         
-        this.physics.add.overlap(this.laserGroup, this.rectangleGroup5, toexpl, null, this);
-
-        function toexpl(a, b) {
-            //debugger;
-            boom = true;
-            a.hit(true);
-        }
 
         ////////////////game over////////////////
         function togameover() {
@@ -199,7 +177,7 @@ class Square extends Phaser.Scene {
                 lives = 3;
             }
             else {
-                
+                lives--;
                 this.scene.start('square');
             }
         }
@@ -250,12 +228,6 @@ class Square extends Phaser.Scene {
             this.scene.start('level_select');
         }
 
-        //////////////shoot/////////////////////
-        this.inputKeys.forEach(key => {
-            // If key was just pressed down, shoot the laser. We use JustDown to make sure this only fires once.
-            if (Phaser.Input.Keyboard.JustDown(key)) {
-                this.shootLaser();
-            }
-        });
+        
     }
 }

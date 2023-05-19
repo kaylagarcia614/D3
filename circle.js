@@ -170,25 +170,16 @@ class Circle extends Phaser.Scene {
     }
 
     ////////////////collisions/////////////////////
-    this.physics.add.collider(this.met, this.phouse, togameover, null, this);
-    this.physics.add.collider(this.met, this.phouse2, togameover, null, this);
-    this.physics.add.collider(this.met, this.phouse3, togameover, null, this);
-
-    this.physics.add.overlap(this.laserGroup, this.phouse, tohit, null, this);
-    this.physics.add.overlap(this.laserGroup, this.phouse2, tohit2, null, this);
-    this.physics.add.overlap(this.laserGroup, this.phouse3, tohit3, null, this);
+    
+    this.physics.add.overlap(this.met, this.phouse, tohit, null, this);
+    this.physics.add.overlap(this.met, this.phouse2, tohit2, null, this);
+    this.physics.add.overlap(this.met, this.phouse3, tohit3, null, this);
 
     
     this.physics.add.collider(this.met, this.rectangleGroup4, togameover, null, this);
 
     
-    this.physics.add.overlap(this.laserGroup, this.rectangleGroup4, toexpl, null, this);
-
-    function toexpl(a, b) {
-      //debugger;
-      boom = true;
-      a.hit(true);
-    }
+    
 
     // Collision callback function
     function togameover() {
@@ -200,7 +191,7 @@ class Circle extends Phaser.Scene {
       }
       else {
         lives--;
-        this.scene.start('cheese');
+        this.scene.start('circle');
       }
     }
 

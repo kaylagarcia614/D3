@@ -152,15 +152,12 @@ class Triangle extends Phaser.Scene {
       // this.rightKey.tint = 0xFACADE;   // tint keyboard key
     } else {
       this.met.setAngularVelocity(0);
-      // this.leftKey.tint = 0xFFFFFF;   // un-tint keys
-      // this.rightKey.tint = 0xFFFFFF;
+      
     }
 
     
     /////////////////collisions///////////////
-    //this.physics.add.collider(this.met, this.ehouse, togameover, null, this);
-    //this.physics.add.collider(this.met, this.ehouse2, togameover, null, this);
-    //this.physics.add.collider(this.met, this.ehouse3, togameover, null, this);
+    
 
     this.physics.add.collider(this.met, this.ehouse, tohit, null, this);
     this.physics.add.collider(this.met, this.ehouse2, tohit2, null, this);
@@ -170,13 +167,7 @@ class Triangle extends Phaser.Scene {
     this.physics.add.collider(this.met, this.rectangleGroup3, togameover, null, this);
 
     
-    this.physics.add.overlap(this.laserGroup, this.rectangleGroup3, toexpl, null, this);
-
-    function toexpl(a,b) {
-      //debugger;
-      boom = true;
-      a.hit(true);
-  }
+    
 
     /////////////game over////////////////
     function togameover() {
@@ -186,7 +177,7 @@ class Triangle extends Phaser.Scene {
       }
       else {
         lives--;
-        this.scene.start('earth');
+        this.scene.start('triangle');
       }
     }
 
@@ -206,7 +197,7 @@ class Triangle extends Phaser.Scene {
       this.ehouse3.destroy();
       score += 100;
     }
-
+    
     ///////////to main menu///////////////
     if (!this.physics.world.bounds.contains(this.met.x, this.met.y)) {
       this.scene.start('level_select');
