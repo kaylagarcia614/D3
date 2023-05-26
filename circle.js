@@ -13,23 +13,26 @@ class Circle extends Phaser.Scene {
   
 
   addEvents() {
-    // this.input.on('pointermove', (pointer) => {
-    //   this.met.x = pointer.x;
-    // });
-
-    this.input.on('pointerdown', pointer => {
-      this.shootLaser();
-    });
-
     this.inputKeys = [
       
       this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER),
     ];
+    this.pointer = this.input.activePointer;
+    this.pointer.leftButtonDown = false;
   }
 
   create() {
     this.addEvents();
 
+    // Touch screen movement
+    this.input.on('pointerdown', () => {
+      this.pointer.leftButtonDown = true;
+    });
+
+    this.input.on('pointerup', () => {
+      this.pointer.leftButtonDown = false;
+      this.met.setAcceleration(0);
+    });
     ////////////////stats////////////////////////
     const text = this.add.text(1600, 100, 'LIVES: ' + lives, { fontFamily: 'Arial', fontSize: 40, color: '#ffffff' });
     text.setDepth(1);
@@ -139,6 +142,17 @@ class Circle extends Phaser.Scene {
 
   update() {
     
+    // Touch screen movement
+    if (this.pointer.leftButtonDown) {
+      const touchX = this.pointer.x;
+      const touchY = this.pointer.y;
+
+      const angle = Phaser.Math.Angle.Between(this.met.x, this.met.y, touchX, touchY);
+      const distance = Phaser.Math.Distance.Between(this.met.x, this.met.y, touchX, touchY);
+      const acceleration = Math.min(distance / 10, 200); // Adjust the divisor to control the acceleration speed
+
+      this.physics.velocityFromRotation(angle, acceleration, this.met.body.acceleration);
+    }
 
     ///////////////////movement///////////////////////
     if (cursors.up.isDown) {
@@ -170,8 +184,6 @@ class Circle extends Phaser.Scene {
     this.physics.add.collider(this.met, this.rectangleGroup4, togameover, null, this);
 
     
-    
-
     // Collision callback function
     function togameover() {
       // Trigger the scene change here

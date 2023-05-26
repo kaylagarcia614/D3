@@ -15,13 +15,22 @@ class Square extends Phaser.Scene {
             
             this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER),
         ];
+        this.pointer = this.input.activePointer;
+        this.pointer.leftButtonDown = false;
     }
 
     create() {
         this.addEvents();
 
-        this.laserGroup = new LaserGroup(this);
-        this.laserGroup.setDepth(1);
+        // Touch screen movement
+        this.input.on('pointerdown', () => {
+            this.pointer.leftButtonDown = true;
+        });
+
+        this.input.on('pointerup', () => {
+            this.pointer.leftButtonDown = false;
+            this.met.setAcceleration(0);
+        });
 
         //////////////////stats//////////////////
         const text = this.add.text(1600, 100, 'LIVES: ' + lives, { fontFamily: 'Arial', fontSize: 40, color: '#ffffff' });
@@ -135,6 +144,17 @@ class Square extends Phaser.Scene {
 
     update() {
         
+        // Touch screen movement
+        if (this.pointer.leftButtonDown) {
+            const touchX = this.pointer.x;
+            const touchY = this.pointer.y;
+
+            const angle = Phaser.Math.Angle.Between(this.met.x, this.met.y, touchX, touchY);
+            const distance = Phaser.Math.Distance.Between(this.met.x, this.met.y, touchX, touchY);
+            const acceleration = Math.min(distance / 10, 200); // Adjust the divisor to control the acceleration speed
+
+            this.physics.velocityFromRotation(angle, acceleration, this.met.body.acceleration);
+        }
 
         /////////////////movement////////////////////
         if (cursors.up.isDown) {
